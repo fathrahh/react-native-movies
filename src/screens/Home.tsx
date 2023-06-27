@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 
 import { Colors } from './../constant';
@@ -15,48 +16,56 @@ import Dot from '../components/Dot';
 
 const { width } = Dimensions.get('window');
 
+function HeroSection() {
+  return (
+    <View>
+      <View>
+        <Image
+          style={styles.highlight}
+          source={require('./../assets/twilight.jpeg')}
+        />
+      </View>
+      <View style={styles.bottomHero}>
+        <Button style={styles.buttonWatch}>
+          <Image source={require('./../assets/Play.png')} />
+          <Typography style={styles.smallGap}>Watch Now</Typography>
+        </Button>
+        <Button rounded marginLeft={16}>
+          <Image source={require('./../assets/Plus.png')} />
+        </Button>
+      </View>
+      <View style={styles.paginationWrapper}>
+        {Array(6)
+          .fill(null)
+          .map((_, idx) => (
+            <Dot
+              key={idx}
+              isActive={idx === 0}
+              marginLeft={idx !== 0 ? 4 : 0}
+            />
+          ))}
+      </View>
+    </View>
+  );
+}
+
 export default function Home() {
   const imageSrc = [
     require('../assets/quantum_poster.jpg'),
     require('../assets/Avatar.jpg'),
     require('../assets/twilight.jpeg'),
+    require('../assets/Avatar.jpg'),
+    require('../assets/twilight.jpeg'),
   ];
 
   const backgroundStyle = {
-    backgroundColor: Colors.base.black,
+    backgroundColor: Colors.darkBlue[500],
   };
 
   return (
     <ScrollView style={[styles.container, backgroundStyle]}>
       <StatusBar backgroundColor={backgroundStyle.backgroundColor} />
-      <View>
-        <View>
-          <Image
-            style={styles.highlight}
-            source={require('./../assets/twilight.jpeg')}
-          />
-        </View>
-        <View style={styles.bottomHero}>
-          <Button style={styles.buttonWatch}>
-            <Image source={require('./../assets/Play.png')} />
-            <Typography style={styles.smallGap}>Watch Now</Typography>
-          </Button>
-          <Button rounded marginLeft={24}>
-            <Image source={require('./../assets/Plus.png')} />
-          </Button>
-        </View>
-        <View style={styles.paginationWrapper}>
-          {Array(6)
-            .fill(null)
-            .map((_, idx) => (
-              <Dot
-                key={idx}
-                isActive={idx === 0}
-                marginLeft={idx !== 0 ? 4 : 0}
-              />
-            ))}
-        </View>
-      </View>
+      <HeroSection />
       <View style={styles.main}>
         <View>
           <View style={[styles.sectionTitle, backgroundStyle]}>
@@ -72,9 +81,41 @@ export default function Home() {
             horizontal
           >
             {imageSrc.map((src, idx) => (
-              <View style={idx !== 0 && styles.moviesGap} key={idx}>
+              <TouchableOpacity
+                activeOpacity={0.6}
+                style={idx !== 0 && styles.moviesGap}
+                key={idx}
+              >
                 <Image style={styles.moviePoster} source={src} />
-              </View>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+        <View
+          style={{
+            marginTop: 24,
+          }}
+        >
+          <View style={[styles.sectionTitle, backgroundStyle]}>
+            <Typography style={[styles.sectionTitle, styles.textHighlight]}>
+              Trending Now
+            </Typography>
+            <Typography style={[styles.textNavigate]}>See all</Typography>
+          </View>
+          <ScrollView
+            style={styles.moviesContainer}
+            showsHorizontalScrollIndicator={false}
+            bounces={false}
+            horizontal
+          >
+            {imageSrc.map((src, idx) => (
+              <TouchableOpacity
+                activeOpacity={0.6}
+                style={idx !== 0 && styles.moviesGap}
+                key={idx}
+              >
+                <Image style={styles.moviePoster} source={src} />
+              </TouchableOpacity>
             ))}
           </ScrollView>
         </View>

@@ -25,6 +25,7 @@ export default function Button({
 
   return (
     <TouchableOpacity
+      activeOpacity={0.6}
       style={[styles.base, styleProps, style, rounded && styles.rounded]}
       {...rest}
     >
