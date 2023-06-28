@@ -7,31 +7,48 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
+
+import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 import { Colors } from './../constant';
 import Typography from './../components/Typography';
 import Button from '../components/Button';
 import Dot from '../components/Dot';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
+import images from '../assets/images';
 
 const { width } = Dimensions.get('window');
 
+const HIGHLIGHT_HEIGHT = 440;
+
 function HeroSection() {
+  const navigate =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View>
       <View>
-        <Image
-          style={styles.highlight}
-          source={require('./../assets/twilight.jpeg')}
-        />
+        <ImageBackground source={images.twilight} style={styles.highlight}>
+          <LinearGradient
+            colors={['transparent', 'rgba(25, 24, 37, 1)']}
+            style={styles.gradient}
+          />
+        </ImageBackground>
       </View>
       <View style={styles.bottomHero}>
-        <Button style={styles.buttonWatch}>
-          <Image source={require('./../assets/Play.png')} />
+        <Button
+          onPress={() => navigate.navigate('Movies', { movieId: 1 })}
+          style={styles.buttonWatch}
+        >
+          <Image source={images.play} />
           <Typography style={styles.smallGap}>Watch Now</Typography>
         </Button>
         <Button rounded marginLeft={16}>
-          <Image source={require('./../assets/Plus.png')} />
+          <Image source={images.plus} />
         </Button>
       </View>
       <View style={styles.paginationWrapper}>
@@ -51,11 +68,11 @@ function HeroSection() {
 
 export default function Home() {
   const imageSrc = [
-    require('../assets/quantum_poster.jpg'),
-    require('../assets/Avatar.jpg'),
-    require('../assets/twilight.jpeg'),
-    require('../assets/Avatar.jpg'),
-    require('../assets/twilight.jpeg'),
+    images.quantum,
+    images.avatar,
+    images.twilight,
+    images.avatar,
+    images.twilight,
   ];
 
   const backgroundStyle = {
@@ -128,6 +145,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  gradient: {
+    flex: 1,
+  },
   bottomHero: {
     display: 'flex',
     flexDirection: 'row',
@@ -136,7 +156,7 @@ const styles = StyleSheet.create({
   highlight: {
     width,
     objectFit: 'cover',
-    height: 440,
+    height: HIGHLIGHT_HEIGHT,
   },
   smallGap: { marginLeft: 4 },
   main: {
