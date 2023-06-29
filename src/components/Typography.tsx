@@ -3,7 +3,7 @@ import React from 'react';
 import type { PropsWithChildren } from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
-import { Colors } from './../constant';
+import { Colors } from '../constants/';
 import myFont from '../utils/font';
 import { FlattenType } from '../utils/types';
 
@@ -18,7 +18,7 @@ export default function Typography({
   ...rest
 }: PropsWithChildren<TextProps & Props>) {
   const fontFamiy = {
-    fontFamily: font,
+    fontFamily: font ?? myFont.poppins.Regular,
   };
 
   return (
@@ -31,6 +31,5 @@ export default function Typography({
 const styles = StyleSheet.create({
   text: {
     color: Colors.base.white,
-    fontFamily: myFont.poppins.Regular,
   },
 });

@@ -20,7 +20,7 @@ const darkBlue = {
   900: '#030204',
 };
 
-export const Colors = {
+export default {
   base,
   gray,
   darkBlue,

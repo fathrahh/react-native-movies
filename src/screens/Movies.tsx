@@ -11,9 +11,12 @@ import { useRoute, RouteProp } from '@react-navigation/native';
 
 import Typography from '../components/Typography';
 import { RootStackParamList } from '../../App';
-import { Colors } from '../constant';
+import { Colors } from '../constants';
 import images from '../assets/images';
 import Button from '../components/Button';
+import font from '../utils/font';
+
+import { Plus, Download, Share } from '../assets/icons';
 
 type MyMoviesProp = RouteProp<RootStackParamList, 'Movies'>;
 
@@ -36,7 +39,10 @@ export default function Movies() {
 
       <View style={styles.main}>
         <View style={styles.mainHeader}>
-          <Typography style={[styles.title, styles.textHighlight]}>
+          <Typography
+            font="Poppins-Bold"
+            style={[styles.title, styles.textHighlight]}
+          >
             Hospital Playlist
           </Typography>
           <View style={styles.moviesMetadata}>
@@ -56,15 +62,15 @@ export default function Movies() {
         </Typography>
         <View style={styles.buttonActionWrapper}>
           <TouchableOpacity style={styles.buttonAction}>
-            <Image source={images.plus} />
+            <Plus color={'white'} width={24} height={24} />
             <Typography>Watchlist</Typography>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAction}>
-            <Image source={images.download} />
+            <Download color={'white'} />
             <Typography>Download</Typography>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAction}>
-            <Image source={images.share} />
+            <Share color={'white'} />
             <Typography>Share</Typography>
           </TouchableOpacity>
         </View>
@@ -121,7 +127,6 @@ const styles = StyleSheet.create({
   },
   metadataText: {
     color: Colors.darkBlue[100],
-    fontWeight: '400',
     fontSize: 12,
   },
   title: {
@@ -131,10 +136,10 @@ const styles = StyleSheet.create({
     color: Colors.darkBlue[100],
   },
   textHighlight: {
-    fontWeight: '600',
+    fontFamily: font.poppins.Bold,
   },
   subtitle: {
-    fontWeight: '500',
+    fontFamily: font.poppins.SemiBold,
     fontSize: 10,
     marginTop: 4,
   },

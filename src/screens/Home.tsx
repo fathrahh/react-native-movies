@@ -13,7 +13,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
-import { Colors } from './../constant';
+import { Colors } from '../constants';
 import Typography from './../components/Typography';
 import Button from '../components/Button';
 import Dot from '../components/Dot';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { Colors } from '../constant';
+import { Colors } from '../constants';
 
 interface Props {
   isActive?: boolean;

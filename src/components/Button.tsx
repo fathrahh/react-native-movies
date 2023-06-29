@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import type { TouchableOpacityProps } from 'react-native';
-import { Colors } from '../constant';
+import { Colors } from '../constants';
 
 interface Props extends TouchableOpacityProps {
   rounded?: boolean;
