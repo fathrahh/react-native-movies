@@ -7,19 +7,20 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
 import { Colors } from '../constants';
 import Typography from './../components/Typography';
 import Button from '../components/Button';
 import Dot from '../components/Dot';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
 import images from '../assets/images';
+import font from '../utils/font';
+import { Play, Plus } from '../assets/icons';
 
 const { width } = Dimensions.get('window');
 
@@ -32,23 +33,33 @@ function HeroSection() {
   return (
     <View>
       <View>
-        <ImageBackground source={images.twilight} style={styles.highlight}>
-          <LinearGradient
-            colors={['transparent', 'rgba(25, 24, 37, 1)']}
-            style={styles.gradient}
-          />
-        </ImageBackground>
+        <Image source={images.twilight} style={styles.highlight} />
+        <LinearGradient
+          colors={[
+            'transparent',
+            'rgba(25, 24, 37, 0.1)',
+            'rgba(25, 24, 37, 1)',
+          ]}
+          start={{
+            x: 0.5,
+            y: 0,
+          }}
+          end={{
+            x: 0.5,
+            y: 1,
+          }}
+          style={StyleSheet.absoluteFill}
+        />
       </View>
       <View style={styles.bottomHero}>
         <Button
           onPress={() => navigate.navigate('Movies', { movieId: 1 })}
-          style={styles.buttonWatch}
-        >
-          <Image source={images.play} />
+          style={styles.buttonWatch}>
+          <Play color="white" />
           <Typography style={styles.smallGap}>Watch Now</Typography>
         </Button>
-        <Button rounded marginLeft={16}>
-          <Image source={images.plus} />
+        <Button rounded marginLeft={16} style={styles.buttonPlus}>
+          <Plus color="white" />
         </Button>
       </View>
       <View style={styles.paginationWrapper}>
@@ -95,14 +106,12 @@ export default function Home() {
             style={styles.moviesContainer}
             showsHorizontalScrollIndicator={false}
             bounces={false}
-            horizontal
-          >
+            horizontal>
             {imageSrc.map((src, idx) => (
               <TouchableOpacity
                 activeOpacity={0.6}
                 style={idx !== 0 && styles.moviesGap}
-                key={idx}
-              >
+                key={idx}>
                 <Image style={styles.moviePoster} source={src} />
               </TouchableOpacity>
             ))}
@@ -111,8 +120,7 @@ export default function Home() {
         <View
           style={{
             marginTop: 24,
-          }}
-        >
+          }}>
           <View style={[styles.sectionTitle, backgroundStyle]}>
             <Typography style={[styles.sectionTitle, styles.textHighlight]}>
               Trending Now
@@ -123,14 +131,12 @@ export default function Home() {
             style={styles.moviesContainer}
             showsHorizontalScrollIndicator={false}
             bounces={false}
-            horizontal
-          >
+            horizontal>
             {imageSrc.map((src, idx) => (
               <TouchableOpacity
                 activeOpacity={0.6}
                 style={idx !== 0 && styles.moviesGap}
-                key={idx}
-              >
+                key={idx}>
                 <Image style={styles.moviePoster} source={src} />
               </TouchableOpacity>
             ))}
@@ -144,14 +150,14 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 77,
   },
-  gradient: {
-    flex: 1,
-  },
+
   bottomHero: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop: -8,
   },
   highlight: {
     width,
@@ -166,6 +172,10 @@ const styles = StyleSheet.create({
   },
   buttonWatch: {
     paddingHorizontal: 24,
+    backgroundColor: Colors.darkBlue[400],
+  },
+  buttonPlus: {
+    backgroundColor: Colors.darkBlue[400],
   },
   paginationWrapper: {
     flexDirection: 'row',
@@ -184,7 +194,7 @@ const styles = StyleSheet.create({
   },
   textHighlight: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: font.poppins.Bold,
   },
   textNavigate: {
     fontSize: 12,

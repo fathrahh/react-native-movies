@@ -6,6 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { useRoute, RouteProp } from '@react-navigation/native';
 
@@ -16,7 +17,7 @@ import images from '../assets/images';
 import Button from '../components/Button';
 import font from '../utils/font';
 
-import { Plus, Download, Share } from '../assets/icons';
+import { Plus, Download, Share, Play } from '../assets/icons';
 
 type MyMoviesProp = RouteProp<RootStackParamList, 'Movies'>;
 
@@ -32,7 +33,7 @@ export default function Movies() {
       <Image source={images.hospital} style={styles.banner} />
       <View style={styles.actionWrapper}>
         <Button style={styles.buttonWatch}>
-          <Image source={images.play} />
+          <Play color="white" />
           <Typography style={styles.smallGap}>Watch Now</Typography>
         </Button>
       </View>
@@ -41,8 +42,7 @@ export default function Movies() {
         <View style={styles.mainHeader}>
           <Typography
             font="Poppins-Bold"
-            style={[styles.title, styles.textHighlight]}
-          >
+            style={[styles.title, styles.textHighlight]}>
             Hospital Playlist
           </Typography>
           <View style={styles.moviesMetadata}>
@@ -74,9 +74,136 @@ export default function Movies() {
             <Typography>Share</Typography>
           </TouchableOpacity>
         </View>
-        <Typography style={[styles.title, styles.textHighlight]}>
-          Season 1
-        </Typography>
+        <View>
+          <Typography style={[styles.title, styles.textHighlight]}>
+            Season 1
+          </Typography>
+          <View style={styles.episodeCard}>
+            <Image
+              style={styles.moviesBanner}
+              source={images.hospitalPreview}
+            />
+            <View style={styles.episodePreview}>
+              <View style={styles.episodeDetail}>
+                <Typography size={12} font="Poppins-SemiBold">
+                  Episode 1
+                </Typography>
+                <Typography size={8} font="Poppins-Light">
+                  For the first time in 20 years, the friends are finally
+                  working under the same roof; a patient with a familiar name
+                  locates Chae Song-hwa.
+                </Typography>
+              </View>
+
+              <View style={styles.episodeDownload}>
+                <TouchableWithoutFeedback
+                  onPress={() => console.log('clicked')}>
+                  <Download color="white" />
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          </View>
+          <View style={styles.episodeCard}>
+            <Image
+              style={styles.moviesBanner}
+              source={images.hospitalPreview}
+            />
+            <View style={styles.episodePreview}>
+              <View style={styles.episodeDetail}>
+                <Typography size={12} font="Poppins-SemiBold">
+                  Episode 1
+                </Typography>
+                <Typography size={8} font="Poppins-Light">
+                  For the first time in 20 years, the friends are finally
+                  working under the same roof; a patient with a familiar name
+                  locates Chae Song-hwa.
+                </Typography>
+              </View>
+
+              <View style={styles.episodeDownload}>
+                <TouchableWithoutFeedback
+                  onPress={() => console.log('clicked')}>
+                  <Download color="white" />
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          </View>
+          <View style={styles.episodeCard}>
+            <Image
+              style={styles.moviesBanner}
+              source={images.hospitalPreview}
+            />
+            <View style={styles.episodePreview}>
+              <View style={styles.episodeDetail}>
+                <Typography size={12} font="Poppins-SemiBold">
+                  Episode 1
+                </Typography>
+                <Typography size={8} font="Poppins-Light">
+                  For the first time in 20 years, the friends are finally
+                  working under the same roof; a patient with a familiar name
+                  locates Chae Song-hwa.
+                </Typography>
+              </View>
+
+              <View style={styles.episodeDownload}>
+                <TouchableWithoutFeedback
+                  onPress={() => console.log('clicked')}>
+                  <Download color="white" />
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          </View>
+          <View style={styles.episodeCard}>
+            <Image
+              style={styles.moviesBanner}
+              source={images.hospitalPreview}
+            />
+            <View style={styles.episodePreview}>
+              <View style={styles.episodeDetail}>
+                <Typography size={12} font="Poppins-SemiBold">
+                  Episode 1
+                </Typography>
+                <Typography size={8} font="Poppins-Light">
+                  For the first time in 20 years, the friends are finally
+                  working under the same roof; a patient with a familiar name
+                  locates Chae Song-hwa.
+                </Typography>
+              </View>
+
+              <View style={styles.episodeDownload}>
+                <TouchableWithoutFeedback
+                  onPress={() => console.log('clicked')}>
+                  <Download color="white" />
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          </View>
+          <View style={styles.episodeCard}>
+            <Image
+              style={styles.moviesBanner}
+              source={images.hospitalPreview}
+            />
+            <View style={styles.episodePreview}>
+              <View style={styles.episodeDetail}>
+                <Typography size={12} font="Poppins-SemiBold">
+                  Episode 1
+                </Typography>
+                <Typography size={8} font="Poppins-Light">
+                  For the first time in 20 years, the friends are finally
+                  working under the same roof; a patient with a familiar name
+                  locates Chae Song-hwa.
+                </Typography>
+              </View>
+
+              <View style={styles.episodeDownload}>
+                <TouchableWithoutFeedback
+                  onPress={() => console.log('clicked')}>
+                  <Download color="white" />
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
     </ScrollView>
   );
@@ -160,5 +287,26 @@ const styles = StyleSheet.create({
   },
   actionIconGap: {
     marginBottom: 2,
+  },
+  moviesBanner: {
+    width: 122,
+    height: 72,
+  },
+  episodeCard: {
+    flexDirection: 'row',
+    marginVertical: 8,
+  },
+  episodePreview: {
+    flex: 1,
+    marginLeft: 10,
+    flexDirection: 'row',
+  },
+  episodeDetail: {
+    flex: 1,
+  },
+  episodeDownload: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
   },
 });

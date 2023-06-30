@@ -9,16 +9,19 @@ import { FlattenType } from '../utils/types';
 
 interface Props {
   font?: FlattenType<typeof myFont>;
+  size?: number;
 }
 
 export default function Typography({
   children,
   style,
   font,
+  size,
   ...rest
 }: PropsWithChildren<TextProps & Props>) {
   const fontFamiy = {
     fontFamily: font ?? myFont.poppins.Regular,
+    ...(size && { fontSize: size }),
   };
 
   return (
