@@ -78,131 +78,33 @@ export default function Movies() {
           <Typography style={[styles.title, styles.textHighlight]}>
             Season 1
           </Typography>
-          <View style={styles.episodeCard}>
-            <Image
-              style={styles.moviesBanner}
-              source={images.hospitalPreview}
-            />
-            <View style={styles.episodePreview}>
-              <View style={styles.episodeDetail}>
-                <Typography size={12} font="Poppins-SemiBold">
-                  Episode 1
-                </Typography>
-                <Typography size={8} font="Poppins-Light">
-                  For the first time in 20 years, the friends are finally
-                  working under the same roof; a patient with a familiar name
-                  locates Chae Song-hwa.
-                </Typography>
-              </View>
+          {new Array(8).fill(null).map((_, idx) => (
+            <View key={idx} style={styles.episodeCard}>
+              <Image
+                style={styles.moviesBanner}
+                source={images.hospitalPreview}
+              />
+              <View style={styles.episodePreview}>
+                <View style={styles.episodeDetail}>
+                  <Typography size={12} font="Poppins-SemiBold">
+                    Episode {idx + 1}
+                  </Typography>
+                  <Typography size={8} font="Poppins-Light">
+                    For the first time in 20 years, the friends are finally
+                    working under the same roof; a patient with a familiar name
+                    locates Chae Song-hwa.
+                  </Typography>
+                </View>
 
-              <View style={styles.episodeDownload}>
-                <TouchableWithoutFeedback
-                  onPress={() => console.log('clicked')}>
-                  <Download color="white" />
-                </TouchableWithoutFeedback>
+                <View style={styles.episodeDownload}>
+                  <TouchableWithoutFeedback
+                    onPress={() => console.log('clicked')}>
+                    <Download color="white" />
+                  </TouchableWithoutFeedback>
+                </View>
               </View>
             </View>
-          </View>
-          <View style={styles.episodeCard}>
-            <Image
-              style={styles.moviesBanner}
-              source={images.hospitalPreview}
-            />
-            <View style={styles.episodePreview}>
-              <View style={styles.episodeDetail}>
-                <Typography size={12} font="Poppins-SemiBold">
-                  Episode 1
-                </Typography>
-                <Typography size={8} font="Poppins-Light">
-                  For the first time in 20 years, the friends are finally
-                  working under the same roof; a patient with a familiar name
-                  locates Chae Song-hwa.
-                </Typography>
-              </View>
-
-              <View style={styles.episodeDownload}>
-                <TouchableWithoutFeedback
-                  onPress={() => console.log('clicked')}>
-                  <Download color="white" />
-                </TouchableWithoutFeedback>
-              </View>
-            </View>
-          </View>
-          <View style={styles.episodeCard}>
-            <Image
-              style={styles.moviesBanner}
-              source={images.hospitalPreview}
-            />
-            <View style={styles.episodePreview}>
-              <View style={styles.episodeDetail}>
-                <Typography size={12} font="Poppins-SemiBold">
-                  Episode 1
-                </Typography>
-                <Typography size={8} font="Poppins-Light">
-                  For the first time in 20 years, the friends are finally
-                  working under the same roof; a patient with a familiar name
-                  locates Chae Song-hwa.
-                </Typography>
-              </View>
-
-              <View style={styles.episodeDownload}>
-                <TouchableWithoutFeedback
-                  onPress={() => console.log('clicked')}>
-                  <Download color="white" />
-                </TouchableWithoutFeedback>
-              </View>
-            </View>
-          </View>
-          <View style={styles.episodeCard}>
-            <Image
-              style={styles.moviesBanner}
-              source={images.hospitalPreview}
-            />
-            <View style={styles.episodePreview}>
-              <View style={styles.episodeDetail}>
-                <Typography size={12} font="Poppins-SemiBold">
-                  Episode 1
-                </Typography>
-                <Typography size={8} font="Poppins-Light">
-                  For the first time in 20 years, the friends are finally
-                  working under the same roof; a patient with a familiar name
-                  locates Chae Song-hwa.
-                </Typography>
-              </View>
-
-              <View style={styles.episodeDownload}>
-                <TouchableWithoutFeedback
-                  onPress={() => console.log('clicked')}>
-                  <Download color="white" />
-                </TouchableWithoutFeedback>
-              </View>
-            </View>
-          </View>
-          <View style={styles.episodeCard}>
-            <Image
-              style={styles.moviesBanner}
-              source={images.hospitalPreview}
-            />
-            <View style={styles.episodePreview}>
-              <View style={styles.episodeDetail}>
-                <Typography size={12} font="Poppins-SemiBold">
-                  Episode 1
-                </Typography>
-                <Typography size={8} font="Poppins-Light">
-                  For the first time in 20 years, the friends are finally
-                  working under the same roof; a patient with a familiar name
-                  locates Chae Song-hwa.
-                </Typography>
-              </View>
-
-              <View style={styles.episodeDownload}>
-                <TouchableWithoutFeedback
-                  onPress={() => console.log('clicked')}>
-                  <Download color="white" />
-                </TouchableWithoutFeedback>
-              </View>
-            </View>
-          </View>
+          ))}
         </View>
       </View>
     </ScrollView>
